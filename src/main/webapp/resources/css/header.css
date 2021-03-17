@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header{
+	background-color:#333;
+	position:fixed;
+	height:50px;
+	width:100%;
+	left:0;
+	top:0;
+	box-shadow:0 2px 2px rgba(0,0,0,0.2);
+	z-index:99;
+}
+
+.loginbox {	
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+.loginbox * {
+  font-family: 'NanumSquareRound';
+  color: #fff;
+}
+
+#gnb * {
+  font-family: 'NanumSquareRound';
+  color: #fff;
+}
+
+#lgn{
+	margin-right:5px;
+}
+.loginbox a {
+  text-decoration: none;
+  font-size:14px;
+  display:inline-block;
+  border:1px solid #fff;
+  padding:5px;
+  border-radius:3px;
+}
+
+#logout_btn{
+	margin-top:2px;
+}
+.loginbox a:hover{
+	background-color: #fff; 
+	color: #333;
+}
+
+#gnb a {
+  text-decoration: none;
+}
+
+#gnb > ul > li {
+  float: left;
+}
+
+#gnb > ul > li > a {
+  display: inline-block;
+  padding: 15px 20px;
+}
+
+#gnb > ul > li > ul > li > a {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+} 
+ 
+#gnb ul{
+	background-color:#333;
+}
+
+header > a {
+	float: left;
+	display: inline-block;
+	margin: 7px;
+	margin-left: 20px;
+}
+
+#gnb {
+	float:left;
+	margin-left:20px;
+}
+
+#gnb > ul > li > ul{
+	overflow: hidden;
+	height: 0;
+}
+
+#gnb > ul > li:hover > ul{
+	height: auto;
+}
+
+#username{
+	border: 0;
+}
+
+#username:hover{
+	text-decoration: underline;
+	background-color: transparent;
+	color: #fff;
+}
+
+.grade{
+	display:inline-block;
+	font-size: 12px;
+	width: 20px;
+	height:20px;
+	border-radius: 50%;
+	text-align:center;
+	line-height:18px;
+	background-color:#fff;
+	color:#333;
+}

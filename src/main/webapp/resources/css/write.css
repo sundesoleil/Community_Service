@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.content_wrap{
+	padding-top:100px;
+	width:1100px;
+	margin:0 auto;
+}
+
+.content_wrap *{
+	font-family: 'NanumSquareRound';
+}
+
+.content_wrap h1{
+	font-size:22px;
+	font-weight:bold;
+	padding-bottom:10px;
+	border-bottom:1px solid #ccc;
+
+}
+
+.title_area{
+	padding: 10px;
+}
+
+.title_area input{
+	border: 1px solid #ccc;
+	height: 27px;
+	width: calc(100% - 50px);
+	margin-left: 5px;
+	outline:none;
+	margin-top:5px;
+	font-size:16px;
+}
+
+.content_area{
+	padding: 10px;
+}
+
+.content_area textarea{
+	resize: none;
+	width: 100%;
+	height: 500px;
+	outline:none;
+	border: 1px solid #ccc;
+	font-size:16px;
+}
+
+.btn_area{
+	padding: 10px;
+	text-align: center;
+}
+
+.btn_area button{
+	padding: 10px 20px;
+	border: 1px solid #ccc;
+	background-color:white;
+	color:#555;
+	
+}
+
+.btn_area button:hover{
+	cursor:pointer;
+	background-color:#ccc;
+}
+
+#post_cancel{
+	float:left;
+}
+
+#post_save{
+	float:right;
+	background-color:#FF5656;
+	color:white;
+	border:0;
+}
+
+#post_save:hover{
+	background-color:#ff1e1e;
+} 

@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.content_wrap{
+	padding-top:100px;
+	width:1100px;
+	margin:0 auto;
+	
+}
+
+.content_wrap *{
+	font-family: 'NanumSquareRound';
+}
+
+.content_wrap > h1{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 15px;
+	border-bottom: 1px solid gray;
+}
+
+.board_table{
+	width: 100%;
+	border-bottom: 1px solid gray;
+}
+
+.board_table tr{
+	border-bottom: 1px solid #ccc;
+}
+
+.board_table tr:last-child{
+	border-bottom:0;
+}
+
+.board_table td, .board_table th{
+	padding: 10px;
+	text-align: center;
+}
+
+.board_table thead{
+	background-color:#333;
+	color:white;
+}
+
+.board_table tbody a{
+	color: #333;
+	text-decoration:none;
+}
+
+.board_table th:nth-child(1){
+	width: 100px;
+}
+
+.board_table th:nth-child(2){
+	width: 80px;
+}
+
+.board_table th:nth-child(3){
+	width:600px;
+}
+
+.board_table th:nth-child(4){
+	width:200px;
+}
+
+.board_table th:nth-child(5){
+	width: 120px;
+}
+
+.board_table tbody a:hover{
+	text-decoration:underline;
+}
+
+.board_table td:nth-child(3){
+	text-align:left;
+}
+
+.pager_area{
+	text-align:center;
+	margin-top:25px;
+}
+
+.pager_area .pagers{
+	display:inline-block;
+}
+
+.pagers a{
+	margin:0 5px;
+	text-decoration:none;
+}
+
+.pagers a.current{
+	font-weight: bold;
+	text-decoration:underline;
+}
+
+.search_area{
+	font-size:0;
+	text-align:center;
+}
+
+.search_area *{
+	height:30px;
+	padding:5px;
+	margin-top:15px;	
+	border:1px solid gray;
+	outline:none;
+	box-sizing:border-box;
+}
+
+.search_area select{
+	border-right:0;
+}
+
+.search_area input{
+	border-right:0;
+	width:200px;
+}
+
+#search_btn{
+	width:70px;
+}
+
+#notice_write{
+	float:right;
+	display:inline-block;
+	text-decoration:none;
+	margin-top:18px;
+	padding: 7px 12px;
+	color:#555;
+	border-radius:5px;
+	background-color:white;
+	font-size:15px;
+	border:1px solid #555;
+}
+
+#notice_write:hover{
+	background-color:#555;
+	color:white;
+	
+}
+
+#prev_page, #next_page{
+	border:0;
+	background-color:white;
+	color:#ccc;
+	cursor:pointer;
+}
