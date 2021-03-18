@@ -8,7 +8,7 @@ $(function(){
 		url:"/api/postCount?board_seq="+board_seq,
 		success:function(data){
 			pageCnt = Math.ceil(data.count/15); 
-			$(".pagers").html(""); // .pagers 내부 html 삭제
+			$(".pagers").html(""); 
 			let start = 0;
 			if(curPage - 4 >= 0){
 				start = curPage-4;
@@ -20,10 +20,10 @@ $(function(){
 			for(let i=start; i < pageCnt; i++){
 				let template;
 				if(offset == i*15){
-					template='<a href="/notice?offset='+i*15+'" class="current">'+(i+1)+'</a>';
+					template='<a href="/report?offset='+i*15+'" class="current">'+(i+1)+'</a>';
 				}
 				else{
-					template='<a href="/notice?offset='+i*15+'">'+(i+1)+'</a>';
+					template='<a href="/report?offset='+i*15+'">'+(i+1)+'</a>';
 				}
 				$(".pagers").append(template);
 				if(i-start == 8){
@@ -36,22 +36,22 @@ $(function(){
 	$("#prev_page").click(function(){
 		let newOffset = offset - 15;
 		if(newOffset < 0) return;
-		location.href= "/notice?offset=" + newOffset;
+		location.href= "/report?offset=" + newOffset;
 	})
 	$("#next_page").click(function(){
 		let newOffset = Number(offset) + 15;
 		if(newOffset/15 >= pageCnt) return;
-		location.href= "/notice?offset=" + newOffset;
+		location.href= "/report?offset=" + newOffset;
 	})
 	$("#prev_10").click(function(){
 		let newOffset = offset - 150;
 		if(newOffset < 0) newOffset = 0;
-		location.href = "/notice?offset=" + newOffset;
+		location.href = "/report?offset=" + newOffset;
 	})
 	$("#next_10").click(function(){
 		let newOffset = Number(offset) + 150;
 		if(newOffset/15 >= pageCnt) newOffset = (pageCnt-1)*15;
-		location.href = "/notice?offset=" + newOffset;
+		location.href = "/report?offset=" + newOffset;
 	})
 })
 

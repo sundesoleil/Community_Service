@@ -201,7 +201,7 @@ $(function(){
 				method:"delete",
 				success:function(){
 					alert("삭제되었습니다.");
-					location.href="/notice";
+					history.back();
 				},
 				error:function(){
 					alert("에러")

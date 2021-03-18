@@ -11,12 +11,12 @@
 	<link rel="stylesheet" href="/resources/css/reset.css">
 	<link rel="stylesheet" href="/resources/css/write.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-<!-- 	<script>
+	<script>
 		<c:if test="${userInfo.ui_seq != postInfo.pi_owner}" >
 			alert("접근 권한이 없습니다.")
 			location.href="/notice";
 		</c:if>
-	</script> -->
+	</script>
 </head>
 <body>
 	<%@include file = "/WEB-INF/views/includes/header.jsp" %>

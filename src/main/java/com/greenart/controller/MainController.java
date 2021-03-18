@@ -23,6 +23,9 @@ public class MainController {
 		List<PostVO> noticeList = service.getPostList(0, 1);
 		List<PostVO> newNoticeList = new ArrayList<PostVO>();
 		
+		List<PostVO> newList = service.getPostList(0, 5);
+		List<PostVO> newBoardList = new ArrayList<PostVO>();
+		
 		int limit = 0;
 		// 5개보다 적으면 리스트 크기로 설정
 		if(noticeList.size()<5) limit = noticeList.size();
@@ -32,6 +35,14 @@ public class MainController {
 			newNoticeList.add(noticeList.get(i));
 		}
 		
+		if(newList.size()<5) limit = newList.size();
+		else limit=5;
+		
+		for(int i=0; i < limit; i++) {
+			newBoardList.add(newList.get(i));
+		}
+		
+		model.addAttribute("newList", newBoardList);
 		model.addAttribute("noticeList", newNoticeList);
 		return "/main";
 	}
@@ -48,4 +59,5 @@ public class MainController {
 		session.invalidate();
 		return "redirect:/";
 	}
+
 }

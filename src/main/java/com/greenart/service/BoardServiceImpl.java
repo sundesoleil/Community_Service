@@ -123,4 +123,28 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteComment(Integer seq) {
 		dao.deleteComment(seq);
 	}
+	@Override
+	public PostVO getStockBySeq(Integer no) {
+		return dao.getStockBySeq(no);
+	}
+	@Override
+	public PostVO getQNABySeq(Integer no) {
+		return dao.getQNABySeq(no);
+	}
+	@Override
+	public PostVO getReportBySeq(Integer no) {
+		return dao.getReportBySeq(no);
+	}
+	@Override
+	public PostVO getCarBySeq(Integer no) {
+		return dao.getCarBySeq(no);
+	}
+	@Override
+	public PostVO getItBySeq(Integer no) {
+		return dao.getItBySeq(no);
+	}
+	@Override
+	public PostVO getItReviewBySeq(Integer no) {
+		return dao.getItReviewBySeq(no);
+	}
 }

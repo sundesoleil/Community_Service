@@ -5,25 +5,23 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>공지등록</title>
+	<title>주식게시판 글 등록</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="/resources/js/write.js"></script>
 	<link rel="stylesheet" href="/resources/css/reset.css">
 	<link rel="stylesheet" href="/resources/css/write.css">
 	<script>
-		<c:if test="${userInfo == null || userInfo.ui_seq != 1}" >
-			alert("접근 권한이 없습니다.")
-			location.href="/";
+		<c:if test="${userInfo == null}" >
+			alert("로그인 후 작성하실 수 있습니다.")
+			location.href="/member/login";
 		</c:if>
-	</script>
-	<script>
 		let boardseq = "${boardSeq}";
-	</script>
+	</script> 
 </head>
 <body>
 	<%@include file = "/WEB-INF/views/includes/header.jsp" %>
 	<div class="content_wrap">
-		<h1>공지사항등록</h1>	
+		<h1>[주식게시판] 글쓰기</h1>	
 		<div class="title_area" data-user-seq="${userInfo.ui_seq }">
 			<span>제목</span>
 			<input type="text" id="post_title">

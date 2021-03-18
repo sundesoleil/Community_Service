@@ -37,4 +37,11 @@ public interface BoardService {
 	public void updateCommentGoodBad(GoodBadVO vo);
 	public List<Integer> selectCommentLikesCount(Integer seq);
 	public void deleteComment(Integer seq);
+
+	public PostVO getStockBySeq(Integer no); 
+	public PostVO getQNABySeq(Integer no);
+	public PostVO getReportBySeq(Integer no);
+	public PostVO getCarBySeq(Integer no);
+	public PostVO getItBySeq(Integer no);
+	public PostVO getItReviewBySeq(Integer no);
 }

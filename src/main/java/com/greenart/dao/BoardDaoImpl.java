@@ -113,4 +113,29 @@ public class BoardDaoImpl implements BoardDao{
 	public void deleteComment(Integer seq) {
 		mapper.deleteComment(seq);
 	}
+
+	@Override
+	public PostVO getStockBySeq(Integer no) {
+		return mapper.getStockBySeq(no);
+	}
+	@Override
+	public PostVO getQNABySeq(Integer no) {
+		return mapper.getQNABySeq(no);
+	}
+	@Override
+	public PostVO getReportBySeq(Integer no) {
+		return mapper.getReportBySeq(no);
+	}
+	@Override
+	public PostVO getCarBySeq(Integer no) {
+		return mapper.getCarBySeq(no);
+	}
+	@Override
+	public PostVO getItBySeq(Integer no) {
+		return mapper.getItBySeq(no);
+	}
+	@Override
+	public PostVO getItReviewBySeq(Integer no) {
+		return mapper.getItReviewBySeq(no);
+	}
 }

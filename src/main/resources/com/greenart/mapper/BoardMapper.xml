@@ -10,7 +10,7 @@
 		LIMIT 15 OFFSET #{offset}
 	</select>
 	<select id="getPostBySeq" resultType="com.greenart.vo.PostVO">
-		SELECT * FROM post_info WHERE pi_seq=#{no}
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 1
 	</select>
 	<insert id="addComment">
 		INSERT INTO comment_info(ci_pi_seq, ci_ui_seq, ci_content)
@@ -51,6 +51,8 @@
 	<select id="getBoardPostCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) from post_info WHERE pi_board_seq = #{board_seq}
 	</select>
+	
+	<!-- 좋아요 기능 -->
 	<insert id="insertPostGoodBad">
 		INSERT INTO post_good_bad(pgb_post_seq, pgb_user_seq, pgb_good_bad) 
 		VALUES (#{post_seq}, #{user_seq}, #{good_bad})
@@ -100,4 +102,25 @@
 	<delete id="deleteComment">
 		DELETE FROM comment_info WHERE ci_seq=#{seq}
 	</delete>
+	<select id="getStockBySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 5	
+	</select>
+	<select id="getQNABySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 2
+	</select>
+	<select id="getReportBySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 3
+	</select>
+		<select id="getCarBySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 6	
+	</select>
+	<select id="getItBySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 7
+	</select>
+	<select id="getItReviewBySeq" resultType="com.greenart.vo.PostVO">
+		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 8
+	</select>
+	
+	
+
 </mapper>

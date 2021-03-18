@@ -43,6 +43,29 @@
 			</div>
 		</section>
 	</div>
+	
+	<div class="main">
+		<section class="s1">
+			<div class="notice">
+				<div class="notice_header">
+					<p>새 글 목록</p>
+					<a href="/stock">more</a>
+				</div>
+				<div class="notice_contents">
+					<c:forEach items="${newList }" var="stock">
+						<a href="/stock/detail?no=${stock.pi_seq }" class="notice_item">
+							<span class="title">
+								<i class="far fa-clipboard"></i> ${stock.pi_title }
+							</span>
+							<span class="date">
+								<fmt:formatDate value="${stock.pi_reg_dt }" pattern="yyyy-MM-dd HH:mm" />
+							</span>
+						</a>
+					</c:forEach>
+				</div>
+			</div>
+		</section>
+	</div>
 	<footer>
 	
 	</footer>

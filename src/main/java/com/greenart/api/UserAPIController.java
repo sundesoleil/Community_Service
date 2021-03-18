@@ -68,7 +68,7 @@ public class UserAPIController {
 		}else {
 			session.setAttribute("userInfo", null);
 		}
-		// session.setAttribute("loginUser", vo);
+
 		map.put("result", result);
 		return map;
 	}

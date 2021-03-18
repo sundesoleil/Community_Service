@@ -84,6 +84,11 @@
 	margin-top:25px;
 }
 
+.pager_area a{
+	text-decoration:none;
+	color:#333;
+}
+
 .pager_area .pagers{
 	display:inline-block;
 }
@@ -145,6 +150,13 @@
 }
 
 #prev_page, #next_page{
+	border:0;
+	background-color:white;
+	color:#ccc;
+	cursor:pointer;
+}
+
+#prev_10, #next_10{
 	border:0;
 	background-color:white;
 	color:#ccc;

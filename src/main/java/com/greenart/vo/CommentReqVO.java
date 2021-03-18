@@ -1,6 +1,7 @@
 package com.greenart.vo;
 /*Request 전용 VO*/
 public class CommentReqVO {
+	
 	private Integer offset;
 	private Integer board_seq;
 	

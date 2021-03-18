@@ -7,26 +7,24 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setHeader("Expires", "0");
  %>
-<!-- uri:uniform resource instance -->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<title>Community Notice</title>
+	<meta charset="UTF-8">
+	<title>QNA</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="/resources/js/board.js"></script>
+	<script src="/resources/js/qna_list.js"></script>
 	<link rel="stylesheet" href="/resources/css/reset.css">
 	<link rel="stylesheet" href="/resources/css/board.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<script>
-		console.log("${list.size()}")
 		let board_seq = "${board_seq}"
 	</script>
 </head>
 <body>
-	<%@include file = "/WEB-INF/views/includes/header.jsp" %>
+<%@include file = "/WEB-INF/views/includes/header.jsp" %>
 	<div class="content_wrap">
-		<h1>공지사항</h1>
+		<h1>문의게시판</h1>
 		<table class="board_table">
 			<thead>
 				<tr>
@@ -47,8 +45,8 @@
 					<c:forEach items="${list }" var="post">
 					<tr>
 						<td>${post.pi_seq}</td>
-						<td>공지</td>
-						<td><a href="/notice/detail?no=${post.pi_seq }">${post.pi_title }</a></td>
+						<td>문의</td>
+						<td><a href="/qna/detail?no=${post.pi_seq }">${post.pi_title }</a></td>
 						<td><fmt:formatDate value="${post.pi_reg_dt }" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>${post.pi_count }</td>
 					</tr>
@@ -57,17 +55,15 @@
 				
 			</tbody>
 		</table>
-		<c:if test="${userInfo.ui_user_type == 1}">
-			<a href="/notice/write?seq=1" id="notice_write">공지등록</a>
-		</c:if>
+			<a href="/qna/write?seq=2" id="notice_write">등록</a>
+
 		<div class="pager_area">
-			
 			<button id="prev_10"><i class="fas fa-angle-double-left"></i></button>
-		
+			<button id="prev_page"><i class="fas fa-chevron-left"></i></button>
 			<div class="pagers">
 
 			</div>
-
+			<button id="next_page"><i class="fas fa-chevron-right"></i></button>
 			<button id="next_10"><i class="fas fa-angle-double-right"></i></button>
 		</div>
 		<div class="search_area">
@@ -81,6 +77,5 @@
 			<button id="search_btn">검색</button>
 		</div>
 	</div>
-
 </body>
 </html>

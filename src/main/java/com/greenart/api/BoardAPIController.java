@@ -21,6 +21,7 @@ import com.greenart.vo.GoodBadVO;
 import com.greenart.vo.PostRegistVO;
 import com.greenart.vo.PostVO;
 
+
 @RestController
 public class BoardAPIController {
 	@Autowired
@@ -53,7 +54,6 @@ public class BoardAPIController {
 		});
 		map.put("data", commentList);
 		return map;
-		//map.put("data", service.selectComment(vo));
 	}
 	
 	@PatchMapping("/api/patchPostCnt")
@@ -183,5 +183,5 @@ public class BoardAPIController {
 		map.put("message","삭제되었습니다.");
 		return map;
 	}
-
+	
 }
