@@ -20,12 +20,17 @@ public class CarController {
 	BoardService service;
 	
 	@GetMapping("/car")
-	public String getCar(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
+	public String getCar(
+			@RequestParam @Nullable Integer offset, 
+			Model model, 
+			@RequestParam @Nullable String keyword,
+			@RequestParam @Nullable String type) {
 		
 		if (offset == null) offset = 0; 
 		if (keyword == null) keyword = "%%";
 		else keyword = "%"+keyword+"%";
- 		List<PostVO> list = service.getPostList(offset, 6, keyword);
+		if(type == null) type = "title";
+ 		List<PostVO> list = service.getPostList(offset, 6, keyword, type);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq", 6);

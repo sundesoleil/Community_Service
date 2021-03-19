@@ -67,8 +67,7 @@
 		</div>
 		<div class="search_area">
 		<form action="/it/review">
-			<select>
-				<option value="all">전체</option>
+			<select name="type">
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 				<option value="author">작성자</option>

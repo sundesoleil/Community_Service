@@ -32,6 +32,7 @@
 					<th>번호</th>
 					<th>유형</th>
 					<th>제목</th>
+					<th>작성자</th>
 					<th>등록일</th>
 					<th>조회</th>
 				</tr>
@@ -48,6 +49,7 @@
 						<td>${post.no}</td>
 						<td>주식</td>
 						<td><a href="/stock/detail?no=${post.pi_seq }&post=${post.no}">${post.pi_title }</a></td>
+						<td>${post.ui_name}</td>
 						<td><fmt:formatDate value="${post.pi_reg_dt }" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>${post.pi_count }</td>
 					</tr>
@@ -69,8 +71,7 @@
 		</div>
 		<div class="search_area">
 		<form action="/stock">
-			<select>
-				<option value="all">전체</option>
+			<select name="type">
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 				<option value="author">작성자</option>

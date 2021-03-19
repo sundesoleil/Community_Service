@@ -16,7 +16,7 @@ public interface BoardMapper {
 	public List<CategoryVO> getCategoryList();
 	
 	// 공지 게시판
-	public List<PostVO> getPostList(Integer offset, Integer board, String keyword); // limit offset 활용 위함
+	public List<PostVO> getPostList(Integer offset, Integer board, String keyword, String type); // limit offset 활용 위함
 	public PostVO getPostBySeq(Integer no);
 	public void addComment(CommentVO vo);
 	public List<CommentVO> selectComment(CommentReqVO vo);
@@ -25,7 +25,7 @@ public interface BoardMapper {
 	public void insertPost(PostRegistVO vo);
 	public void deletePost(Integer seq);
 	public void modifyPost(PostVO vo);
-	public Integer getBoardPostCount(Integer board_seq, String keyword);
+	public Integer getBoardPostCount(Integer board_seq, String keyword, String type);
 	
 	// 좋아요 기능
 	public void insertPostGoodBad(GoodBadVO vo);

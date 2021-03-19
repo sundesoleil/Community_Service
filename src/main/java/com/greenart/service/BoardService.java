@@ -16,7 +16,7 @@ import com.greenart.vo.PostVO;
 @Configurable
 public interface BoardService {
 	public List<CategoryVO> getCategoryList();
-	public List<PostVO> getPostList(Integer offset, Integer board, String keyword);
+	public List<PostVO> getPostList(Integer offset, Integer board, String keyword, String type);
 	public PostVO getPostBySeq(Integer no);
 	public void addComment(CommentVO vo);
 	public List<CommentVO> selectComment(CommentReqVO vo);
@@ -25,7 +25,7 @@ public interface BoardService {
 	public void insertPost(PostRegistVO vo);
 	public void deletePost(Integer seq);
 	public void modifyPost(PostVO vo);
-	public Integer getBoardPostCount(Integer board_seq, String keyword);
+	public Integer getBoardPostCount(Integer board_seq, String keyword, String type);
 	
 	public void insertPostGoodBad(GoodBadVO vo);
 	public GoodBadVO selectPostGoodBad(GoodBadVO vo);
@@ -44,4 +44,5 @@ public interface BoardService {
 	public PostVO getCarBySeq(Integer no);
 	public PostVO getItBySeq(Integer no);
 	public PostVO getItReviewBySeq(Integer no);
+
 }

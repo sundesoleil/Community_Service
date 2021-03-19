@@ -33,4 +33,16 @@ public class UserDaoImpl implements UserDao{
 	public UserVO selectUserById(LoginVO vo) {
 		return mapper.selectUserById(vo);
 	}
+	@Override
+	public UserVO selectUserBySeq(Integer seq) {
+		return mapper.selectUserBySeq(seq);
+	}
+	@Override
+	public Integer selectUserGoodBadCount(Integer seq, Integer good_bad) {
+		return mapper.selectUserGoodBadCount(seq, good_bad);
+	}
+	@Override
+	public Integer selectUserPostCount(Integer seq) {
+		return mapper.selectUserPostCount(seq);
+	}
 }

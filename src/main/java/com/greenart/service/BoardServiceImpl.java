@@ -26,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<PostVO> getPostList(Integer offset, Integer board, String keyword) {
-		List<PostVO> postList = dao.getPostList(offset, board, keyword);
+	public List<PostVO> getPostList(Integer offset, Integer board, String keyword, String type) {
+		List<PostVO> postList = dao.getPostList(offset, board, keyword, type);
 		postList.forEach(post -> {
 			Integer seq = post.getPi_seq();
 			CommentReqVO vo = new CommentReqVO();
@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService {
 			}
 		});
 		
-		Integer total = this.getBoardPostCount(board, "%%");
+		Integer total = this.getBoardPostCount(board, "%%", null);
 		for(int i =0; i<postList.size(); i++) {
 			postList.get(i).setNo(total-i-offset);
 		}
@@ -86,8 +86,9 @@ public class BoardServiceImpl implements BoardService {
 		dao.modifyPost(vo);
 	}
 	@Override
-	public Integer getBoardPostCount(Integer board_seq, String keyword) {
-		return dao.getBoardPostCount(board_seq, keyword);
+	public Integer getBoardPostCount(
+			Integer board_seq, String keyword, String type) {
+		return dao.getBoardPostCount(board_seq, keyword, type);
 	}
 	
 	@Override

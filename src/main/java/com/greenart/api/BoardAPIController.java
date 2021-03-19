@@ -90,11 +90,15 @@ public class BoardAPIController {
 	}
 	
 	@GetMapping("/api/postCount")
-	public Map<String, Integer> getPostCount(@RequestParam Integer board_seq, @RequestParam @Nullable String keyword){
+	public Map<String, Integer> getPostCount(
+			@RequestParam Integer board_seq, 
+			@RequestParam @Nullable String keyword,
+			@RequestParam @Nullable String type
+			){
 		if(keyword == null) keyword = "%%";
 		else keyword = "%"+keyword+"%";
 		Map<String, Integer> map = new LinkedHashMap<String, Integer>();
-		Integer count = service.getBoardPostCount(board_seq, keyword);
+		Integer count = service.getBoardPostCount(board_seq, keyword, type);
 		map.put("count", count);
 		return map;
 	}

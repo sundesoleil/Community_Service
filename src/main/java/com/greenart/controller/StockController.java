@@ -21,12 +21,17 @@ public class StockController {
 	BoardService service;
 	
 	@GetMapping("/stock")
-	public String getStock(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
+	public String getStock(
+			@RequestParam @Nullable Integer offset, 
+			Model model, 
+			@RequestParam @Nullable String keyword,
+			@RequestParam @Nullable String type) {
 		
 		if (offset == null) offset = 0; 
 		if (keyword == null) keyword = "%%";
 		else keyword = "%"+keyword+"%";
- 		List<PostVO> list = service.getPostList(offset, 5, keyword);
+		if(type == null) type = "title";
+ 		List<PostVO> list = service.getPostList(offset, 5, keyword, type);
 		
 //		Integer total = service.getBoardPostCount(1);
 //		for(int i = 0; i<list.size(); i++) {

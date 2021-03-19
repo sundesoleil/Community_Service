@@ -20,11 +20,16 @@ public class ReportController {
 	BoardService service;
 	
 	@GetMapping("/report")
-	public String getReport(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
+	public String getReport(
+			@RequestParam @Nullable Integer offset, 
+			Model model, 
+			@RequestParam @Nullable String keyword,
+			@RequestParam @Nullable String type) {
 		if (offset == null) offset = 0; 
 		if (keyword == null) keyword = "%%";
 		else keyword = "%"+keyword+"%";
- 		List<PostVO> list = service.getPostList(offset, 3, keyword);
+		if(type == null) type = "title";
+ 		List<PostVO> list = service.getPostList(offset, 3, keyword, type);
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq", 3);
 		return "/report/list";

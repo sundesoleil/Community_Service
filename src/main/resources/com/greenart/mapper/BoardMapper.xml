@@ -5,7 +5,20 @@
 		SELECT * FROM board_info;
 	</select>
 	<select id="getPostList" resultType="com.greenart.vo.PostVO">
-		SELECT * FROM post_info WHERE pi_board_seq = #{board} AND pi_title LIKE #{keyword}
+		SELECT a.*, b.ui_name
+		FROM post_info a
+		INNER JOIN user_info b
+		ON a.pi_owner = b.ui_seq
+		WHERE pi_board_seq = #{board} 
+		<if test="type == 'title' ">
+			AND pi_title LIKE #{keyword}
+		</if>
+		<if test="type == 'content' ">
+			AND pi_content LIKE #{keyword}
+		</if>
+ 		<if test="type == 'author' ">
+			AND ui_name LIKE #{keyword}
+		</if> 
 		ORDER BY pi_seq DESC 
 		LIMIT 15 OFFSET #{offset}
 	</select>
@@ -49,7 +62,20 @@
 		WHERE pi_seq = #{pi_seq};
 	</update>
 	<select id="getBoardPostCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) from post_info WHERE pi_board_seq = #{board_seq} AND pi_title LIKE #{keyword}
+		SELECT COUNT(*) 
+		FROM post_info a
+		INNER JOIN user_info b
+		ON a.pi_owner = b.ui_seq
+		WHERE pi_board_seq = #{board_seq} 
+		<if test="type == 'title' ">
+			AND pi_title LIKE #{keyword}
+		</if>
+		<if test="type == 'content' ">
+			AND pi_content LIKE #{keyword}
+		</if>
+		<if test="type == 'author' ">
+			AND ui_name LIKE #{keyword}
+		</if> 
 	</select>
 	
 	<!-- 좋아요 기능 -->

@@ -9,18 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greenart.service.BoardService;
+import com.greenart.service.UserService;
 import com.greenart.vo.PostVO;
+import com.greenart.vo.UserVO;
 
 @Controller
 public class MainController {
+	// 하나의 컨트롤러에서 2개 이상의 서비스 연결해서 사용 가능
 	@Autowired
 	BoardService service;
+	@Autowired
+	UserService uService;
 	
 	@GetMapping("/")
 	public String getMain(Model model) {
-		List<PostVO> noticeList = service.getPostList(0, 1, "%%");
+		List<PostVO> noticeList = service.getPostList(0, 1, "%%", null);
 		List<PostVO> newNoticeList = new ArrayList<PostVO>();
 		
 		
@@ -33,7 +39,7 @@ public class MainController {
 			newNoticeList.add(noticeList.get(i));
 		}
 		
-		List<PostVO> stockList = service.getPostList(0, 5, "%%");
+		List<PostVO> stockList = service.getPostList(0, 5, "%%", null);
 		List<PostVO> newStockList = new ArrayList<PostVO>();
 		
 		if(stockList.size()<5) limit = stockList.size();
@@ -61,5 +67,19 @@ public class MainController {
 		session.invalidate();
 		return "redirect:/";
 	}
-
+	@GetMapping("/member/detail")
+	public String getMemberDetail(@RequestParam Integer ui_seq, Model model) {
+		UserVO vo = uService.selectUserBySeq(ui_seq);
+		Integer postCnt = uService.selectUserPostCount(ui_seq);
+		Integer likeCnt = uService.selectUserGoodBadCount(ui_seq, 1);
+		Integer dislikeCnt = uService.selectUserGoodBadCount(ui_seq, 0);
+		
+		model.addAttribute("user_detail", vo); // vo 내보내기
+		model.addAttribute("postCnt", postCnt);
+		model.addAttribute("likeCnt", likeCnt);
+		model.addAttribute("dislikeCnt", dislikeCnt);
+		
+		return "/member/detail";
+	}
+	
 }

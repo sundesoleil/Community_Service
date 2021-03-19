@@ -43,8 +43,7 @@
 			</div>
 		</section>
 	</div>
-	<div class="main">
-		<section class="s1">
+
 			<div class="notice">
 				<div class="notice_header">
 					<p>주식게시판</p>
@@ -63,8 +62,7 @@
 					</c:forEach>
 				</div>
 			</div>
-		</section>
-	</div>
+
 	<footer>
 	
 	</footer>

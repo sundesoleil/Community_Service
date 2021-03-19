@@ -76,4 +76,16 @@ public class UserServiceImpl implements UserService{
 	public UserVO selectUserById(LoginVO vo) {
 		return dao.selectUserById(vo);
 	}
+	@Override
+	public UserVO selectUserBySeq(Integer seq) {
+		return dao.selectUserBySeq(seq);
+	}
+	@Override
+	public Integer selectUserGoodBadCount(Integer seq, Integer good_bad) {
+		return dao.selectUserGoodBadCount(seq, good_bad);
+	}
+	@Override
+	public Integer selectUserPostCount(Integer seq) {
+		return dao.selectUserPostCount(seq);
+	}
 }
