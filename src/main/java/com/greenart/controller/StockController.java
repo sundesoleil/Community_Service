@@ -21,9 +21,18 @@ public class StockController {
 	BoardService service;
 	
 	@GetMapping("/stock")
-	public String getStock(@RequestParam @Nullable Integer offset, Model model) {
+	public String getStock(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
+		
 		if (offset == null) offset = 0; 
-		List<PostVO> list = service.getPostList(offset, 5);
+		if (keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
+ 		List<PostVO> list = service.getPostList(offset, 5, keyword);
+		
+//		Integer total = service.getBoardPostCount(1);
+//		for(int i = 0; i<list.size(); i++) {
+//			list.get(i).setNo(total-i-offset);
+//		}
+		
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq",5);
 		return "/stock/list";
@@ -47,13 +56,13 @@ public class StockController {
 	}
 	
 	@GetMapping("/stock/write")
-	public String getNewNotice(@RequestParam Integer seq, Model model) {
+	public String getStockWrite(@RequestParam Integer seq, Model model) {
 		model.addAttribute("boardSeq", seq);
 		return "/stock/write";
 	}
 
 	@GetMapping("/stock/modify")
-	public String getModifyStock(@RequestParam Integer seq, Model model) {
+	public String getStockModify(@RequestParam Integer seq, Model model) {
 		PostVO vo = service.getStockBySeq(seq);
 		model.addAttribute("postInfo", vo); 
 		return "/stock/modify";

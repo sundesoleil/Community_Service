@@ -21,6 +21,7 @@
 	<script>
 		console.log("${list.size()}")
 		let board_seq = "${board_seq}"
+		let board_name = "notice";
 	</script>
 </head>
 <body>
@@ -46,9 +47,9 @@
 				<c:if test = "${list.size() > 0 }">
 					<c:forEach items="${list }" var="post">
 					<tr>
-						<td>${post.pi_seq}</td>
+						<td>${post.no}</td>
 						<td>공지</td>
-						<td><a href="/notice/detail?no=${post.pi_seq }">${post.pi_title }</a></td>
+						<td><a href="/notice/detail?no=${post.pi_seq }&post=${post.no}">${post.pi_title }</a></td>
 						<td><fmt:formatDate value="${post.pi_reg_dt }" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>${post.pi_count }</td>
 					</tr>
@@ -71,14 +72,16 @@
 			<button id="next_10"><i class="fas fa-angle-double-right"></i></button>
 		</div>
 		<div class="search_area">
-			<select>
-				<option value="all">전체</option>
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-				<option value="author">작성자</option>
-			</select>
-			<input type="text" id="search_keyword">
-			<button id="search_btn">검색</button>
+			<form action="/notice">
+				<select>
+					<option value="all">전체</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="author">작성자</option>
+				</select>
+				<input type="text" id="search_keyword" name="keyword">
+				<button id="search_btn" type="submit">검색</button>
+			</form>
 		</div>
 	</div>
 

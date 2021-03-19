@@ -20,9 +20,13 @@ public class ItController {
 	BoardService service;
 	
 	@GetMapping("/it")
-	public String getIt(@RequestParam @Nullable Integer offset, Model model) {
+	public String getIt(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
+		
 		if (offset == null) offset = 0; 
-		List<PostVO> list = service.getPostList(offset, 7);
+		if (keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
+ 		List<PostVO> list = service.getPostList(offset, 7, keyword);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq", 7);
 		return "/it/list";
@@ -60,9 +64,11 @@ public class ItController {
 	
 	// 리뷰단
 	@GetMapping("/it/review")
-	public String getItReview(@RequestParam @Nullable Integer offset, Model model) {
+	public String getItReview(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
 		if (offset == null) offset = 0; 
-		List<PostVO> list = service.getPostList(offset, 8);
+		if (keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
+ 		List<PostVO> list = service.getPostList(offset, 8, keyword);
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq", 8);
 		return "/it/review/list";

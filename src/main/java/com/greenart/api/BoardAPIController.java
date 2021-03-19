@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -89,9 +90,11 @@ public class BoardAPIController {
 	}
 	
 	@GetMapping("/api/postCount")
-	public Map<String, Integer> getPostCount(@RequestParam Integer board_seq){
+	public Map<String, Integer> getPostCount(@RequestParam Integer board_seq, @RequestParam @Nullable String keyword){
+		if(keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
 		Map<String, Integer> map = new LinkedHashMap<String, Integer>();
-		Integer count = service.getBoardPostCount(board_seq);
+		Integer count = service.getBoardPostCount(board_seq, keyword);
 		map.put("count", count);
 		return map;
 	}

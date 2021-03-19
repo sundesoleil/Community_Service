@@ -26,8 +26,8 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public List<PostVO> getPostList(Integer offset, Integer board) {
-		return mapper.getPostList(offset, board);
+	public List<PostVO> getPostList(Integer offset, Integer board, String keyword) {
+		return mapper.getPostList(offset, board, keyword);
 	}
 	
 	@Override
@@ -69,8 +69,8 @@ public class BoardDaoImpl implements BoardDao{
 		mapper.modifyPost(vo);
 	}
 	@Override
-	public Integer getBoardPostCount(Integer board_seq) {
-		return mapper.getBoardPostCount(board_seq);
+	public Integer getBoardPostCount(Integer board_seq, String keyword) {
+		return mapper.getBoardPostCount(board_seq, keyword);
 	}
 	
 	@Override

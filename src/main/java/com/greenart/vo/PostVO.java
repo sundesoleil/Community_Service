@@ -16,6 +16,7 @@ public class PostVO {
 	private Integer pi_status;
 	private Integer pi_board_seq;
 	private String ui_name;
+	private Integer no;
 	
 	public Integer getPi_seq() {
 		return pi_seq;
@@ -95,4 +96,11 @@ public class PostVO {
 	public void setUi_name(String ui_name) {
 		this.ui_name = ui_name;
 	}
+	public Integer getNo() {
+		return no;
+	}
+	public void setNo(Integer no) {
+		this.no = no;
+	}
+	
 }

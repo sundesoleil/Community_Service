@@ -20,11 +20,9 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String getMain(Model model) {
-		List<PostVO> noticeList = service.getPostList(0, 1);
+		List<PostVO> noticeList = service.getPostList(0, 1, "%%");
 		List<PostVO> newNoticeList = new ArrayList<PostVO>();
 		
-		List<PostVO> newList = service.getPostList(0, 5);
-		List<PostVO> newBoardList = new ArrayList<PostVO>();
 		
 		int limit = 0;
 		// 5개보다 적으면 리스트 크기로 설정
@@ -35,15 +33,19 @@ public class MainController {
 			newNoticeList.add(noticeList.get(i));
 		}
 		
-		if(newList.size()<5) limit = newList.size();
+		List<PostVO> stockList = service.getPostList(0, 5, "%%");
+		List<PostVO> newStockList = new ArrayList<PostVO>();
+		
+		if(stockList.size()<5) limit = stockList.size();
 		else limit=5;
 		
 		for(int i=0; i < limit; i++) {
-			newBoardList.add(newList.get(i));
+			newStockList.add(stockList.get(i));
 		}
 		
-		model.addAttribute("newList", newBoardList);
 		model.addAttribute("noticeList", newNoticeList);
+		model.addAttribute("stockList", newStockList);
+		
 		return "/main";
 	}
 	@GetMapping("/member/join")

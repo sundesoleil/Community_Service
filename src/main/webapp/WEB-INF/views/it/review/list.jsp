@@ -13,12 +13,13 @@
 	<meta charset="UTF-8">
 	<title>Review</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="/resources/js/it_review.js"></script>
+	<script src="/resources/js/board.js"></script>
 	<link rel="stylesheet" href="/resources/css/reset.css">
 	<link rel="stylesheet" href="/resources/css/board.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<script>
 		let board_seq = "${board_seq}"
+		let board_name = "it/review";
 	</script>
 </head>
 <body>
@@ -44,9 +45,9 @@
 				<c:if test = "${list.size() > 0 }">
 					<c:forEach items="${list }" var="post">
 					<tr>
-						<td>${post.pi_seq}</td>
+						<td>${post.no}</td>
 						<td>사용기</td>
-						<td><a href="/it/review/detail?no=${post.pi_seq }">${post.pi_title }</a></td>
+						<td><a href="/it/review/detail?no=${post.pi_seq }&post=${post.no}">${post.pi_title }</a></td>
 						<td><fmt:formatDate value="${post.pi_reg_dt }" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>${post.pi_count }</td>
 					</tr>
@@ -65,14 +66,16 @@
 			<button id="next_10"><i class="fas fa-angle-double-right"></i></button>
 		</div>
 		<div class="search_area">
+		<form action="/it/review">
 			<select>
 				<option value="all">전체</option>
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 				<option value="author">작성자</option>
 			</select>
-			<input type="text" id="search_keyword">
+			<input type="text" id="search_keyword" name="keyword">
 			<button id="search_btn">검색</button>
+		</form>
 		</div>
 	</div>
 </body>

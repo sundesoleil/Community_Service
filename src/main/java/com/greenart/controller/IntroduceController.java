@@ -21,9 +21,12 @@ public class IntroduceController {
 	BoardService service;
 	
 	@GetMapping("/notice")
-	public String getNotice(@RequestParam @Nullable Integer offset, Model model) {
+	public String getNotice(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
 		if (offset == null) offset = 0; 
-		List<PostVO> list = service.getPostList(offset, 1);
+		if (keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
+ 		List<PostVO> list = service.getPostList(offset, 1, keyword);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq",1);
 		return "/introduce/notice";

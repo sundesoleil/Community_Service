@@ -30,7 +30,7 @@
 				</div>
 				<div class="notice_contents">
 					<c:forEach items="${noticeList }" var="notice">
-						<a href="/notice/detail?no=${notice.pi_seq }" class="notice_item">
+						<a href="/notice/detail?no=${notice.pi_seq }&post=${notice.no}" class="notice_item">
 							<span class="title">
 								<i class="far fa-clipboard"></i> ${notice.pi_title }
 							</span>
@@ -43,17 +43,16 @@
 			</div>
 		</section>
 	</div>
-	
 	<div class="main">
 		<section class="s1">
 			<div class="notice">
 				<div class="notice_header">
-					<p>새 글 목록</p>
+					<p>주식게시판</p>
 					<a href="/stock">more</a>
 				</div>
 				<div class="notice_contents">
-					<c:forEach items="${newList }" var="stock">
-						<a href="/stock/detail?no=${stock.pi_seq }" class="notice_item">
+					<c:forEach items="${stockList }" var="stock">
+						<a href="/stock/detail?no=${stock.pi_seq }&post=${stock.no}" class="notice_item">
 							<span class="title">
 								<i class="far fa-clipboard"></i> ${stock.pi_title }
 							</span>

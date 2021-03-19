@@ -27,7 +27,8 @@
 		<h1>문제신고게시판</h1>
 		<div class="title_area">
 			<div class="title_left">
-				<span id="pi_seq">${data.pi_seq }</span>
+				<span id="pi_seq" style="display:none;">${data.pi_seq }</span>
+				<span id="no"></span>
 				<span id="post_title">${data.pi_title }<span class="comment_cnt"></span></span>
 			</div>
 			<div class="title_right">

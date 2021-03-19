@@ -1,11 +1,13 @@
 $(function(){
+	$("#search_keyword").val(decodeURI(getParam("keyword")));
 	let offset = getParam("offset");
 	let curPage = Number(offset)/15;
 	let pageCnt = 0;
 
 	console.log(curPage);
 	$.ajax({
-		url:"/api/postCount?board_seq="+board_seq,
+		url:"/api/postCount?board_seq=" + board_seq + "&keyword=" + getParam("keyword"),
+		type:"get",
 		success:function(data){
 			pageCnt = Math.ceil(data.count/15); 
 			$(".pagers").html(""); // .pagers 내부 html 삭제
@@ -20,10 +22,10 @@ $(function(){
 			for(let i=start; i < pageCnt; i++){
 				let template;
 				if(offset == i*15){
-					template='<a href="/notice?offset='+i*15+'" class="current">'+(i+1)+'</a>';
+					template='<a href="/'+ board_name + '?offset='+ i*15 + "&keyword=" + getParam("keyword") +'" class="current">'+(i+1)+'</a>';
 				}
 				else{
-					template='<a href="/notice?offset='+i*15+'">'+(i+1)+'</a>';
+					template='<a href="/' + board_name + '?offset=' +i*15 + "&keyword=" + getParam("keyword") + '">'+(i+1)+'</a>';
 				}
 				$(".pagers").append(template);
 				if(i-start == 8){
@@ -36,22 +38,22 @@ $(function(){
 	$("#prev_page").click(function(){
 		let newOffset = offset - 15;
 		if(newOffset < 0) return;
-		location.href= "/notice?offset=" + newOffset;
+		location.href= "/" + board_name + "?offset=" + newOffset + "&keyword=" + getParam("keyword");
 	})
 	$("#next_page").click(function(){
 		let newOffset = Number(offset) + 15;
 		if(newOffset/15 >= pageCnt) return;
-		location.href= "/notice?offset=" + newOffset;
+		location.href= "/" + board_name + "?offset=" + newOffset + "&keyword=" + getParam("keyword");
 	})
 	$("#prev_10").click(function(){
 		let newOffset = offset - 150;
 		if(newOffset < 0) newOffset = 0;
-		location.href = "/notice?offset=" + newOffset;
+		location.href = "/" + board_name + "?offset=" + newOffset + "&keyword=" + getParam("keyword");
 	})
 	$("#next_10").click(function(){
 		let newOffset = Number(offset) + 150;
 		if(newOffset/15 >= pageCnt) newOffset = (pageCnt-1)*15;
-		location.href = "/notice?offset=" + newOffset;
+		location.href = "/" + board_name + "?offset=" + newOffset + "&keyword=" + getParam("keyword");
 	})
 })
 

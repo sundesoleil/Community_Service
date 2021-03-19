@@ -5,7 +5,7 @@
 		SELECT * FROM board_info;
 	</select>
 	<select id="getPostList" resultType="com.greenart.vo.PostVO">
-		SELECT * FROM post_info WHERE pi_board_seq = #{board}
+		SELECT * FROM post_info WHERE pi_board_seq = #{board} AND pi_title LIKE #{keyword}
 		ORDER BY pi_seq DESC 
 		LIMIT 15 OFFSET #{offset}
 	</select>
@@ -49,7 +49,7 @@
 		WHERE pi_seq = #{pi_seq};
 	</update>
 	<select id="getBoardPostCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) from post_info WHERE pi_board_seq = #{board_seq}
+		SELECT COUNT(*) from post_info WHERE pi_board_seq = #{board_seq} AND pi_title LIKE #{keyword}
 	</select>
 	
 	<!-- 좋아요 기능 -->
@@ -120,7 +120,5 @@
 	<select id="getItReviewBySeq" resultType="com.greenart.vo.PostVO">
 		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 8
 	</select>
-	
-	
 
 </mapper>

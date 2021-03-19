@@ -21,9 +21,11 @@ public class QNAController {
 	BoardService service;
 	
 	@GetMapping("/qna")
-	public String getQNA(@RequestParam @Nullable Integer offset, Model model) {
+	public String getQNA(@RequestParam @Nullable Integer offset, Model model, @RequestParam @Nullable String keyword) {
 		if (offset == null) offset = 0; 
-		List<PostVO> list = service.getPostList(offset, 2);
+		if (keyword == null) keyword = "%%";
+		else keyword = "%"+keyword+"%";
+ 		List<PostVO> list = service.getPostList(offset, 2, keyword);
 		model.addAttribute("list", list);
 		model.addAttribute("board_seq", 2);
 		return "/qna/list";
