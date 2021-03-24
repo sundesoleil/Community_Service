@@ -47,4 +47,6 @@ public interface BoardMapper {
 	public PostVO getItBySeq(Integer no);
 	public PostVO getItReviewBySeq(Integer no);
 	
+	public List<PostVO> selectPostByUserId(Integer user_seq);
+	
 }

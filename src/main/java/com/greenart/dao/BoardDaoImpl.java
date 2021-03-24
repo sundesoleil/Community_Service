@@ -138,4 +138,8 @@ public class BoardDaoImpl implements BoardDao{
 	public PostVO getItReviewBySeq(Integer no) {
 		return mapper.getItReviewBySeq(no);
 	}
+	@Override
+	public List<PostVO> selectPostByUserId(Integer user_seq) {
+		return mapper.selectPostByUserId(user_seq);
+	}
 }

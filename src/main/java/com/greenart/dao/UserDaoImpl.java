@@ -45,4 +45,8 @@ public class UserDaoImpl implements UserDao{
 	public Integer selectUserPostCount(Integer seq) {
 		return mapper.selectUserPostCount(seq);
 	}
+	@Override
+	public void updateUserInfo(UserVO vo) {
+		mapper.updateUserInfo(vo);
+	}
 }

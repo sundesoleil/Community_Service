@@ -153,4 +153,40 @@ public class BoardServiceImpl implements BoardService {
 	public PostVO getItReviewBySeq(Integer no) {
 		return dao.getItReviewBySeq(no);
 	}
+	@Override
+	public List<PostVO> selectPostByUserId(Integer user_seq) {
+		/*board 이름을 sql에서 가져오지 않았을 때의 처리
+		List<PostVO> list = dao.selectPostByUserId(user_seq);
+		list.forEach(post -> {
+			String board_name = "";
+			switch(post.getPi_board_seq()) {
+			case 1:
+				board_name = "공지사항";
+				break;
+			case 2:
+				board_name = "문의";
+				break;
+			case 3:
+				board_name = "문제신고";
+				break;
+			case 5:
+				board_name = "주식";
+				break;
+			case 6:
+				board_name = "자동차";
+				break;
+			case 7:
+				board_name = "IT";
+				break;
+			case 8:
+				board_name = "사용기";
+				break;
+			default:
+				board_name = "-";
+			}
+			post.setBi_name(board_name);
+		});
+		return list;*/
+		return dao.selectPostByUserId(user_seq);
+	}
 }

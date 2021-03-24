@@ -5,14 +5,14 @@
     font-style: normal;
 }
 .pf_info{
-	margin-left:5px;
+
 	padding: 5px 15px;
 }
 .content_wrap *{
 	font-family: 'NanumSquareRound';
 }
 .content_wrap{
-	padding-top:120px;
+	padding-top:80px;
 	width:800px;
 	margin:0 auto;
 
@@ -25,8 +25,9 @@
 	border:0;
 }
 .profile_img{
+	margin-top:50px;
 	width:200px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .profile_img img{
 	vertical-align:middle;
@@ -42,6 +43,7 @@
 .item_label, .item_content{
 	display: inline-block;
 }
+
 .item_label{
 	font-weight: bold;
 	margin-right: 5px;
@@ -50,7 +52,7 @@
 .profile_info > div{
 	margin-top: 15px;
 	margin-bottom: 15px;
-	font-size: 18px;
+	font-size: 15px;
 }
 .item_label:first-child{
 	margin-left:0;
@@ -79,12 +81,20 @@
 	width: calc(100% - 210px);
 } 
 #modify{
-	width: 100%;
-	padding:20px;
+	margin-left:15px;
+	margin-top:5px;
+	text-decoration:none;
+	padding:5px;
+	background-color:white;
+	color:#555;
+	border:1px solid #555;
+	cursor:pointer;
+	font-size:13px;
+	border-radius:5px;
+}
+#modify:hover{
 	background-color:#555;
 	color:white;
-	cursor:pointer;
-	font-size:20px;
 }
 
 

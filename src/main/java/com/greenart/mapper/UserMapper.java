@@ -16,4 +16,5 @@ public interface UserMapper {
 	public Integer selectUserPostCount(Integer seq);
 	public Integer selectUserGoodBadCount(Integer seq, Integer good_bad);
 	
+	public void updateUserInfo(UserVO vo);
 }

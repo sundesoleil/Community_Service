@@ -72,4 +72,39 @@ public class UserAPIController {
 		map.put("result", result);
 		return map;
 	}
+	
+	@PostMapping("/api/modify_user")
+	public Map<String, String> postUserModify(@RequestBody UserVO vo ){
+		Map<String, String> resultMap = new LinkedHashMap<String, String>();
+		
+		if(vo.getUi_pwd() != null && vo.getUi_pwd() != "") {
+			LoginVO login = new LoginVO();
+			login.setId(vo.getUi_id());
+			try {
+				login.setPwd(AESAlgorithm.Encrypt(vo.getUi_pwd()));
+			}catch(Exception e) {e.printStackTrace();}
+			
+			boolean authPwd = service.loginUser(login);
+			
+			if(!authPwd) {
+				resultMap.put("result", "auth failed");
+				resultMap.put("message", "기존 비밀번호가 일치하지 않습니다.");
+				return resultMap;
+			}
+			try {
+				vo.setConfirm_pwd(AESAlgorithm.Encrypt(vo.getConfirm_pwd()));
+			}
+			catch(Exception e) {e.printStackTrace();}
+			service.updateUserInfo(vo);
+			resultMap.put("result", "success");
+			resultMap.put("message", "변경되었습니다.");
+			return resultMap;
+		}
+		
+		service.updateUserInfo(vo);
+		resultMap.put("result", "success");
+		resultMap.put("message", "변경되었습니다.");
+		
+		return resultMap;
+	}
 }

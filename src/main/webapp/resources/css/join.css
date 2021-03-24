@@ -40,6 +40,12 @@ body{
 	position: relative;
 }
 
+.input_cell input:disabled{
+	background-color:#ccc;
+	color:#999;
+	user-select:none;
+}
+
 .input_cell p{
 	font-size: 18px;
 	margin-bottom: 10px;

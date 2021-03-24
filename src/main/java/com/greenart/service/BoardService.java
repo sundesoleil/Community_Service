@@ -44,5 +44,7 @@ public interface BoardService {
 	public PostVO getCarBySeq(Integer no);
 	public PostVO getItBySeq(Integer no);
 	public PostVO getItReviewBySeq(Integer no);
+	
+	public List<PostVO> selectPostByUserId(Integer user_seq);
 
 }

@@ -12,6 +12,7 @@ public class UserVO {
 	private String ui_profile_img;
 	private String ui_introduce;
 	private String ui_ip;
+	private String confirm_pwd;
 	
 	public Integer getUi_seq() {
 		return ui_seq;
@@ -78,6 +79,12 @@ public class UserVO {
 	}
 	public void setUi_ip(String ui_ip) {
 		this.ui_ip = ui_ip;
+	}
+	public String getConfirm_pwd() {
+		return confirm_pwd;
+	}
+	public void setConfirm_pwd(String confirm_pwd) {
+		this.confirm_pwd = confirm_pwd;
 	}
 	
 }

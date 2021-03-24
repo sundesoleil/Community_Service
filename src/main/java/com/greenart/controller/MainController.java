@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greenart.service.BoardService;
 import com.greenart.service.UserService;
+import com.greenart.utils.AESAlgorithm;
+import com.greenart.vo.LoginVO;
 import com.greenart.vo.PostVO;
 import com.greenart.vo.UserVO;
 
@@ -64,6 +67,7 @@ public class MainController {
 	}
 	@GetMapping("/member/logout")
 	public String getLogout(HttpSession session) {
+		session.setAttribute("userInfo", null);
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -74,12 +78,40 @@ public class MainController {
 		Integer likeCnt = uService.selectUserGoodBadCount(ui_seq, 1);
 		Integer dislikeCnt = uService.selectUserGoodBadCount(ui_seq, 0);
 		
+		List<PostVO> postList = service.selectPostByUserId(ui_seq);
+		
 		model.addAttribute("user_detail", vo); // vo 내보내기
 		model.addAttribute("postCnt", postCnt);
 		model.addAttribute("likeCnt", likeCnt);
 		model.addAttribute("dislikeCnt", dislikeCnt);
+		model.addAttribute("recentPosts", postList);
 		
 		return "/member/detail";
+	}
+	
+	@GetMapping("/member/modify")
+	public String getMemberModify() {
+		return "/member/modify";
+	}
+	
+	@PostMapping("/member/cert")
+	public String getMemberCert(@RequestParam String user_id, @RequestParam String user_pwd) {
+		boolean result = false;
+		LoginVO vo = new LoginVO();
+		vo.setId(user_id);
+		try {
+			vo.setPwd(AESAlgorithm.Encrypt(user_pwd));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		result = uService.loginUser(vo);
+		if(result) {
+			return "/member/modify_info";
+		}
+		else {
+			return "/member/modify";
+		}
+		
 	}
 	
 }

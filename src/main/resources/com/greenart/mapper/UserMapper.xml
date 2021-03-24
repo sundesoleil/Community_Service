@@ -35,4 +35,18 @@
 			ON a.pi_seq = b.pgb_post_seq
 		)
 	</select>
+	<update id="updateUserInfo">
+		UPDATE user_info
+		SET 
+			<if test = "confirm_pwd != '' and confirm_pwd != null">
+				ui_pwd = #{confirm_pwd},
+			</if>  
+			ui_name=#{ui_name}, 
+			ui_email=#{ui_email}, 
+			ui_blog=#{ui_blog}, 
+			ui_profile_img=#{ui_profile_img},
+			ui_introduce=#{ui_introduce}
+		WHERE 
+			ui_seq = #{ui_seq}
+	</update>
 </mapper>

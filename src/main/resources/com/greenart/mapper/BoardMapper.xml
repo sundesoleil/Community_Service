@@ -146,5 +146,13 @@
 	<select id="getItReviewBySeq" resultType="com.greenart.vo.PostVO">
 		SELECT * FROM post_info WHERE pi_seq=#{no} AND pi_board_seq = 8
 	</select>
-
+	<select id="selectPostByUserId" resultType="com.greenart.vo.PostVO">
+		SELECT a.bi_name, b.* FROM 
+		board_info a
+		INNER JOIN post_info b
+		ON a.bi_seq = b.pi_board_seq
+		WHERE b.pi_owner = 1
+		ORDER BY b.pi_reg_dt DESC
+		LIMIT 10 OFFSET 0
+	</select>
 </mapper>

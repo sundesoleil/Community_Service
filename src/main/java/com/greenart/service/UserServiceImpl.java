@@ -88,4 +88,8 @@ public class UserServiceImpl implements UserService{
 	public Integer selectUserPostCount(Integer seq) {
 		return dao.selectUserPostCount(seq);
 	}
+	@Override
+	public void updateUserInfo(UserVO vo) {
+		dao.updateUserInfo(vo);
+	}
 }
