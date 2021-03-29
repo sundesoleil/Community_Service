@@ -20,7 +20,6 @@
 </head>
 <body>
 	<%@include file = "/WEB-INF/views/includes/header.jsp" %>
-	
 	<div class="main">
 		<section class="s1">
 			<div class="notice">
